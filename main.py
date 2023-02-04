@@ -5,7 +5,7 @@ import mysql.connector
 
 def mostrarlivros(conexao):
 
-    lista_livros = conexao.consultarbanco('''
+    lista_livros = conexao.consultarBanco('''
     SELECT "ID", "Nome","autor","ano","categoria" FROM "Livros"
     ORDE BY "ID" ASC  
     ''')                                        #ORDE BY "ID" ASC  (serve para ordenar)
