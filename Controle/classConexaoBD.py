@@ -25,8 +25,7 @@ class ConexaoBD():
         self.desconecta()
         return resultado
 
-
-    def executa_DML(self,sql): #INSERT UPDATE DELETE
+    def manipularBanco(self,sql): #INSERT UPDATE DELETE
         self.conecta()
         self.cur.execute(sql)
         self.con.commit()
