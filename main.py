@@ -18,7 +18,7 @@ def mostrarlivros(conexao):
     ''')                                        #ORDER BY "ID" ASC  (serve para ordenar)     # ORDER BY "id" ASC  
     
     for liv in lista_livros:
-        print(f"ID: {liv[0]} - Nome: {liv[1]} - Autor: {liv[2]} - Ano: {liv[3]} - Categoria: {liv[4]} \n")
+        print(f"ID: {liv[0]} - Nome: {liv[1]} - Autor: {liv[2]} - Categoria: {liv[3]} \n")
 
 def menuAlterarLivro (conexao):
 
@@ -41,8 +41,7 @@ def menuAlterarLivro (conexao):
             Seleciona o que você deseja alterar:
             1 - Nome
             2 - Autor
-            3 - Ano
-            4 - Categoria 
+            3 - Categoria 
             Digite:
             ''')
             match opcoes:
@@ -62,13 +61,6 @@ def menuAlterarLivro (conexao):
                 
                 case "3":
 
-                    novoAno = input("Digite o Novo Ano: ")
-                    atualizacaoescolhida = conexao.manipularBanco(f'''
-                    UPDATE livros SET ano = {novoAno} WHERE id = {livroEscolhido}''')
-                    print("Alterado com sucesso")
-
-                case "4":
-
                     novaCategoria = input("Digite a Nova Categoria: ")
                     atualizacaoescolhida = conexao.manipularBanco(f'''
                     UPDATE livros SET categoria = "{novaCategoria}" WHERE id = {livroEscolhido}''')
@@ -76,4 +68,4 @@ def menuAlterarLivro (conexao):
 
             
 
-teste = menuAlterarLivro(con)
+teste = menuAlterarLivro(con) 
