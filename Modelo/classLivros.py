@@ -20,7 +20,7 @@ class Livros():
     def visualizar (self):
 
         print(f'''
-        Informações do Livro:
+        Informações do Livros:
         ID - {self.id}
         Nome - {self.nome}
         Autor - {self.autor}
@@ -32,3 +32,10 @@ class Livros():
         UPDATE "{tabela}"
         SET "Nome" = '{self.nome}', "Autor" = '{self.autor}, "Ano" = '{self.Ano}', "Categoria" = '{self.categoria}'
         WHERE "ID" = '`{self.id}'''
+
+    def consultarAlugueis(self):
+        sql = f'''
+        SELECT * FROM "aluguel"
+        WHERE "id_cliente" = '{self._id}'
+        '''
+        return sql
