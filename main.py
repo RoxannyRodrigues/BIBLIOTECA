@@ -1,5 +1,7 @@
 from Controle.classConexaoBD import ConexaoBD
 from Modelo.classLivros import Livros
+from Modelo.classCliente import Cliente
+from Modelo.classAluguel import Aluguel
 
 import mysql.connector
 
@@ -10,10 +12,13 @@ try:
 except(Exception,mysql.connector.Error) as error:
     print("Ocorreu um erro:", error)
 
+
+#OPÇÕES DE LIVRO
+
 def mostrarlivros(conexao):
 
     lista_livros = conexao.consultarBanco('''
-    SELECT id, nome, autor, ano, categoria FROM livros
+    SELECT id, nome, autor, categoria FROM livros
     ORDER BY id ASC
     ''')                                        #ORDER BY "ID" ASC  (serve para ordenar)     # ORDER BY "id" ASC  
     
@@ -35,8 +40,7 @@ def menuAlterarLivro (conexao):
             livroConsulta = conexao.consultarBanco(f'''
             SELECT * FROM livros
             WHERE ID = {livroEscolhido}
-            ''')[0]
-            #livro = Livros(livroConsulta[0],livroConsulta[1],livroConsulta[2],livroConsulta[3],livroConsulta[4]) # explicação
+            ''')
             opcoes = input('''
             Seleciona o que você deseja alterar:
             1 - Nome
@@ -68,4 +72,59 @@ def menuAlterarLivro (conexao):
 
             
 
-teste = menuAlterarLivro(con) 
+#OPÇÕES DE CLIENTES
+
+def mostrarClientes(conexao):
+    print("Lista de Cliente")
+    listacliente = conexao.consultarBanco('''
+    SELECT id, nome, cpf,  `limite de livros` FROM cliente
+   
+    ''')
+
+    for cliente in listacliente:
+        print(f"ID: {cliente[0]} - Nome: {cliente[1]} - CPF: {cliente[2]} - Limite de Livros: {cliente[3]} \n")
+
+
+def menuAlterarClientes(conexao):
+    print(f'''
+    
+    Escolha uma das opções:
+    1. Buscar Cliente
+    2. Inserir novo Cliente
+    ''')
+    opcoes = input("Digite: ")
+    match opcoes:
+        case "1":
+            print(f'''
+            Buscar por:
+            1. ID
+            2. CPF
+            ''')
+            escolha = input("Digite: ")
+            match escolha:
+                case "1":
+                    iddocliente = input("Digite o ID: ")
+                    visualizacaocliente = conexao.consultarBanco(f'''
+                    SELECT * FROM cliente
+                    WHERE ID = {iddocliente}
+                    ''')
+                    for client in visualizacaocliente:
+                        print(f"ID: {client[0]} - Nome: {client[1]} - CPF: {client[2]} - Limite de Livros: {client[3]} \n")
+
+                case "2":
+                    cpfdocliente = input("Digite o CPF: ")
+                    visualizacaocliente = conexao.consultarBanco(f'''
+                    SELECT * FROM cliente
+                    WHERE cpf = {cpfdocliente}
+                    ''')
+                    for cpfclient in visualizacaocliente:
+                        print(f"ID: {cpfclient[0]} - Nome: {cpfclient[1]} - CPF: {cpfclient[2]} - Limite de Livros: {cpfclient[3]} \n")
+                        print(f'''
+                        Deseja atualizar Cliente:
+                        1. SIM
+                        2. NÃO
+                        ''')
+
+#se fosse por nome. 
+
+teste = menuAlterarClientes(con)
