@@ -4,16 +4,21 @@ import mysql.connector
 class ConexaoBD():
 
 
-    def __init__(self, host = "localhost", user = "root", db = "biblioteca" ):
-        self.host = host
-        self.user = user
-        self.db= db
+    def __init__(self, db = "biblioteca", host = "localhost", port = 3306, user = "root", password = 7289):
+        self._db= db
+        self._host = host
+        self._port = port
+        self._user = user
+        self._password = password
 
     def conecta (self):
-        self.con = mysql.connector.connect(host = self.host, 
-                                           user = self.user, 
-                                           db   = self.db)
+        self.con = mysql.connector.connect (db  = self._db,
+                                           host = self._host, 
+                                           port = self._port,
+                                           user = self._user, 
+                                           password = self._password)
         self.cur = self.con.cursor()
+
 
     def desconecta (self):
         self.con.close()
