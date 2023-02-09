@@ -124,3 +124,4 @@ def menuAlterarClientes(conexao):
                         2. NÃO
                         ''')
 
+teste = mostrarClientes(con)
