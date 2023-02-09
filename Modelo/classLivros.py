@@ -3,17 +3,16 @@ import mysql.connector
 from Controle.classConexaoBD import *
 
 class Livros():
-    def __init__(self, id , nome, autor, ano, categoria):
+    def __init__(self, id , nome, autor, categoria):
         self.id = id
         self.nome = nome
         self.autor = autor
-        self.ano = ano
         self.categoria = categoria
     
     def incluir (self,tabela):
         sql = f'''
         INSERT INTO "{tabela}"
-        VALUES (default,'{self.nome}','{self.autor}',{self.ano}',{self.categoria} )'''
+        VALUES (default,'{self.nome}','{self.autor}', {self.categoria} )'''
 
         return sql
     
@@ -30,7 +29,7 @@ class Livros():
     def atualizarLivro(self,tabela):
         sql = f'''
         UPDATE "{tabela}"
-        SET "Nome" = '{self.nome}', "Autor" = '{self.autor}, "Ano" = '{self.Ano}', "Categoria" = '{self.categoria}'
+        SET "Nome" = '{self.nome}', "Autor" = '{self.autor}', "Categoria" = '{self.categoria}'
         WHERE "ID" = '`{self.id}'''
 
     def consultarAlugueis(self):
