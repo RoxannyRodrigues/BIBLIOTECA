@@ -76,12 +76,12 @@ def menuAlterarLivro (conexao):
 def mostrarClientes(conexao):
     print("Lista de Cliente")
     listacliente = conexao.consultarBanco('''
-    SELECT id, nome, cpf,  `limite de livros` FROM cliente
+    SELECT id, nome, cpf, limite de livros FROM cliente
    
     ''')
 
     for cliente in listacliente:
-        print(f"ID: {cliente[0]} - Nome: '({cliente[1]})' - CPF: '({cliente[2]})' - Limite de Livros: '({cliente[3]})' \n")
+        print(f"ID: {cliente[0]} - Nome: '({cliente[1]})' - CPF: ({cliente[2]}) - Limite de Livros: ({cliente[3]}) \n")
 
 
 def menuAlterarClientes(conexao):
@@ -124,5 +124,3 @@ def menuAlterarClientes(conexao):
                         2. NÃO
                         ''')
 
-
-teste = mostrarlivros(con)
