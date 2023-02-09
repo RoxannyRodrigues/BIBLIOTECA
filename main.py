@@ -22,7 +22,7 @@ def mostrarlivros(conexao):
     ''')                                        #ORDER BY "ID" ASC  (serve para ordenar)     # ORDER BY "id" ASC  
     
     for liv in lista_livros:
-        print(f"ID: {liv[0]} - Nome: {liv[1]} - Autor: {liv[2]} - Categoria: {liv[3]} \n")
+        print(f'ID: {liv[0]} - Nome: "{liv[1]}" - Autor: "{liv[2]}" - Categoria: "{liv[3]}" \n')
 
 def menuAlterarLivro (conexao):
 
@@ -81,7 +81,7 @@ def mostrarClientes(conexao):
     ''')
 
     for cliente in listacliente:
-        print(f"ID: {cliente[0]} - Nome: '{cliente[1]}' - CPF: '{cliente[2]}' - Limite de Livros: '{cliente[3]}' \n")
+        print(f"ID: {cliente[0]} - Nome: '({cliente[1]})' - CPF: '({cliente[2]})' - Limite de Livros: '({cliente[3]})' \n")
 
 
 def menuAlterarClientes(conexao):
