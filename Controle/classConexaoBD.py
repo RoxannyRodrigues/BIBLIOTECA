@@ -3,7 +3,7 @@ import mysql.connector
 
 class ConexaoBD():
   
-    def __init__(self, host = "localhost", user = "root", password = 7289, database = "biblioteca"):
+    def __init__(self, host = "localhost", user = "root", password = "7289", database = "biblioteca"):
         self._host = host
         self._user = user
         self._password = password
