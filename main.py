@@ -6,7 +6,7 @@ from Modelo.classAluguel import Aluguel
 import mysql.connector
 
 try:
-    con = ConexaoBD("biblioteca", "localhost",3306, "root", 7289)
+    con = ConexaoBD()
     print("Conectou")
 
 except(Exception,mysql.connector.Error) as error:
@@ -18,8 +18,8 @@ except(Exception,mysql.connector.Error) as error:
 def mostrarlivros(conexao):
 
     lista_livros = conexao.consultarBanco('''
-    SELECT * FROM livros
-    ''')                                        #ORDER BY "ID" ASC  (serve para ordenar)     # ORDER BY "id" ASC  
+    SELECT * FROM biblioteca.livros;
+     ''')                                        #ORDER BY "ID" ASC  (serve para ordenar)     # ORDER BY "id" ASC  
     
     for liv in lista_livros:
         print(f'ID: {liv[0]} - Nome: "{liv[1]}" - Autor: "{liv[2]}" - Categoria: "{liv[3]}" \n')
