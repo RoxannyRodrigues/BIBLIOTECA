@@ -23,7 +23,6 @@ class Livros():
         ID - {self.id}
         Nome - {self.nome}
         Autor - {self.autor}
-        Ano - {self.ano}
         Categoria - {self.categoria}''')
     
     def atualizarLivro(self,tabela):
@@ -35,6 +34,6 @@ class Livros():
     def consultarAlugueis(self):
         sql = f'''
         SELECT * FROM "aluguel"
-        WHERE "id_cliente" = '{self._id}'
+        WHERE "id_cliente" = '{self.id}'
         '''
         return sql
