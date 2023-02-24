@@ -1,4 +1,3 @@
-import mysql.connector
 
 class Cliente:
     def __init__(self, id, nome, cpf, limitedelivros):
@@ -17,45 +16,46 @@ class Cliente:
         ''')
 
     def consultarClientePorID(self):
+        
         sql = f'''
-        SELECT * FROM "cliente"
-        WHERE "id" = '{self._id}'
+        SELECT * FROM cliente
+        WHERE id = {self._id}
         '''
         return sql
 
     def consultarClientePorCPF(self):
         sql = f'''
-        SELECT * FROM "cliente"
-        WHERE "cpf" = '{self._cpf}'
+        SELECT * FROM cliente
+        WHERE cpf = {self._cpf}
         '''
         return sql
 
     def consultarClientePorNome(self):
         sql = f'''
-        SELECT * FROM "cliente"
-        WHERE "nome" = '{self._nome}'
+        SELECT * FROM cliente
+        WHERE nome = {self._nome}
         '''
         return sql
 
     def consultarAlugueis(self):
         sql = f'''
-        SELECT * FROM "aluguel"
-        WHERE "id_cliente" = '{self._id}'
+        SELECT * FROM aluguel
+        WHERE `id cliente` = {self._id}
         '''
         return sql
 
     def inserirCliente(self):
         sql = f'''
-        INSERT INTO "cliente"
-        VALUES(default, '{self._nome}', '{self._cpf}')      
+        INSERT INTO cliente
+        VALUES({self._nome}, {self._cpf}, {self._limitedelivros})      
         '''
         return sql
 
 
-    def atualizarCliente(self,tabela):
+    def atualizarCliente(self):
         sql = f'''
-        UPDATE "{tabela}"
-        SET "nome" = '{self.nome}', "cpf" = '{self.cpf}, "limitedelivros" = '{self._limitedelivros}'
-        WHERE "id" = '`{self.id}'''
+        UPDATE cliente
+        SET nome = {self.nome}, cpf = {self.cpf}, limitedelivros = {self._limitedelivros}
+        WHERE id = {self.id}'''
 
  
