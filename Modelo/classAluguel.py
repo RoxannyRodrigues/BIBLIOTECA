@@ -1,8 +1,3 @@
-import mysql.connector
-
-from Controle.classConexaoBD import *
-
-
 class Aluguel:
     def __init__(self, id, dataaluguel, idcliente,idlivro):
         self._id = id
@@ -12,17 +7,17 @@ class Aluguel:
     
     def imprimirAluguel(self):
 
-        print(f'''
+        return f'''
         ID - {self._id}
         dataaluguel - {self._dataaluguel}
         idcliente - {self._idcliente}
-        idlivro - {self.__idlivro}
-        ''')
+        idlivro - {self._idlivro}
+        '''
 
     def consultaAluguelID(self):
         sql = f'''
-        SELECT * FROM "aluguel"
-        WHERE "id" = '{self._id}'
+        SELECT * FROM aluguel
+        WHERE id = {self._id}
         '''
         return sql
 
